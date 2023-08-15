@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { FC, memo, ReactNode } from 'react'
 
-const Focus = () => {
-  return <div>focus</div>
+interface IProps {
+  children?: ReactNode
+}
+const Focus: FC<IProps> = () => {
+  return <div>Focus</div>
 }
 
-export default Focus
+export default memo(Focus)
