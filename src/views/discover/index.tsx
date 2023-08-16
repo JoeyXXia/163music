@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode } from 'react'
+import React, { FC, memo, ReactNode, Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
 interface IProps {
@@ -8,7 +8,9 @@ const Discover: FC<IProps> = () => {
   return (
     <div>
       discover
-      <Outlet />
+      <Suspense fallback="">
+        <Outlet />
+      </Suspense>
     </div>
   )
 }
