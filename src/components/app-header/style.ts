@@ -17,6 +17,7 @@ export const HeaderWrapper = styled.div`
 
 export const HeaderLeft = styled.div`
   display: flex;
+
   .logo {
     display: block;
     width: 176px;
@@ -45,9 +46,10 @@ export const HeaderLeft = styled.div`
           width: 28px;
           height: 19px;
           background-image: url(${require('@/assets/img/sprite_01.png')});
-          background-position: 190px 0;
+          background-position: -190px 0;
           top: 20px;
           right: -15px;
+          color: red;
         }
       }
 
@@ -63,7 +65,7 @@ export const HeaderLeft = styled.div`
         width: 12px;
         height: 7px;
         bottom: -1px;
-        left: -50%;
+        left: 50%;
         transform: translate(-50%, 0);
         background-position: -226px 0;
       }

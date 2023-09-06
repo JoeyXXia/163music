@@ -15,7 +15,7 @@ interface IProps {
 }
 const AppHeader: FC<IProps> = () => {
   function showItem(item: any) {
-    if (item.path === 'path') {
+    if (item.type === 'path') {
       return (
         <NavLink
           to={item.link}
