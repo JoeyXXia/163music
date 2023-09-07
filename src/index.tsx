@@ -2,16 +2,21 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
+
 import 'normalize.css'
+import theme from '@/assets/theme'
 import './assets/css/index.less'
 import App from '@/App'
 import store from '@/store'
+import { ThemeProvider } from 'styled-components'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <Provider store={store}>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <ThemeProvider theme={theme}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </ThemeProvider>
   </Provider>
 )
