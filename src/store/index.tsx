@@ -6,8 +6,12 @@ import {
   useSelector
 } from 'react-redux'
 
+import recommendReducer from '../views/discover/c-views/recommned/store/recommend'
+
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    recommend: recommendReducer
+  }
 })
 
 type GetStateFnType = typeof store.getState
@@ -16,5 +20,5 @@ type DispatchType = typeof store.dispatch
 
 export const useAppSelector: TypedUseSelectorHook<IRootState> = useSelector
 export const useAppDispatch: () => DispatchType = useDispatch
-export const shallowEqualApo = shallowEqual
+export const shallowEqualApp = shallowEqual
 export default store
