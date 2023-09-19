@@ -16,7 +16,12 @@ const Recommend: FC<IProps> = () => {
   return (
     <RecommendWrapper>
       <TopBanner />
-      <HotRecommend />
+      <div className="content wrap-v2">
+        <div className="left">
+          <HotRecommend />
+        </div>
+        <div className="right">right</div>
+      </div>
     </RecommendWrapper>
   )
 }
