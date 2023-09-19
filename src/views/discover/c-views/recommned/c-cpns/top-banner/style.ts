@@ -68,6 +68,7 @@ export const BannerControl = styled.div`
     height: 63px;
     background-image: url(${require('@/assets/img/banner_sprite.png')});
     background-color: transparent;
+    cursor: pointer;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);

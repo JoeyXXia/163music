@@ -1,6 +1,6 @@
 import React, { FC, memo, ReactNode } from 'react'
-import { HeaderWrapper } from '@/components/app-header/style'
 import { Link } from 'react-router-dom'
+import { HeaderV1Wrapper } from '@/components/area-header-v1/style'
 
 interface IProps {
   children?: ReactNode
@@ -17,7 +17,7 @@ const AreaHeaderV1: FC<IProps> = (props) => {
     moreLink = '/'
   } = props
   return (
-    <HeaderWrapper className="sprite_02">
+    <HeaderV1Wrapper className="sprite_02">
       <div className="left">
         <h3 className="titile">{title}</h3>
         <div className="keywords">
@@ -25,7 +25,7 @@ const AreaHeaderV1: FC<IProps> = (props) => {
             return (
               <div className="item" key={item}>
                 <span className="link">{item}</span>
-                <span className="divider">{item}</span>
+                <span className="divider">|</span>
               </div>
             )
           })}
@@ -37,7 +37,7 @@ const AreaHeaderV1: FC<IProps> = (props) => {
         </Link>
         <i className="icon sprite_02"></i>
       </div>
-    </HeaderWrapper>
+    </HeaderV1Wrapper>
   )
 }
 
