@@ -19,7 +19,7 @@ const AreaHeaderV1: FC<IProps> = (props) => {
   return (
     <HeaderV1Wrapper className="sprite_02">
       <div className="left">
-        <h3 className="titile">{title}</h3>
+        <h3 className="title">{title}</h3>
         <div className="keywords">
           {keywords.map((item) => {
             return (
