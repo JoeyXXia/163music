@@ -14,7 +14,6 @@ const HotRecommend: FC<IProps> = () => {
     }),
     shallowEqualApp
   )
-  console.log(hotRecommends)
   return (
     <HotRecommendWrapper>
       <AreaHeaderV1
