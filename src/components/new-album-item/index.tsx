@@ -1,5 +1,5 @@
 import React, { FC, memo, ReactNode } from 'react'
-import { NewAlnumItemWrapper } from '@/components/new-album-item/sttyle'
+import { NewAlbumItemWrapper } from '@/components/new-album-item/style'
 import { getImageSize } from '@/utils/format'
 
 interface IProps {
@@ -10,7 +10,7 @@ const NewAlbumItem: FC<IProps> = (props) => {
   const { itemData } = props
 
   return (
-    <NewAlnumItemWrapper>
+    <NewAlbumItemWrapper>
       <div className="top">
         <img src={getImageSize(itemData.picUrl, 140)} alt="" />
         <a href="" className="cover sprite_cover"></a>
@@ -19,7 +19,7 @@ const NewAlbumItem: FC<IProps> = (props) => {
         <div className="name">{itemData.name}</div>
         <div className="artist">{itemData.artist.name}</div>
       </div>
-    </NewAlnumItemWrapper>
+    </NewAlbumItemWrapper>
   )
 }
 

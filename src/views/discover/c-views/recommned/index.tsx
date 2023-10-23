@@ -4,6 +4,7 @@ import TopBanner from '@/views/discover/c-views/recommned/c-cpns/top-banner'
 import { useAppDispatch } from '@/store'
 import {
   fetchBannerDataAction,
+  fetchNewAlbumAction,
   fetchRecommendAction
 } from '@/views/discover/c-views/recommned/store/recommend'
 import HotRecommend from '@/views/discover/c-views/recommned/c-cpns/hot-recommend'
@@ -17,6 +18,7 @@ const Recommend: FC<IProps> = () => {
   useEffect(() => {
     dispatch(fetchBannerDataAction())
     dispatch(fetchRecommendAction())
+    dispatch(fetchNewAlbumAction())
   }, [])
   return (
     <RecommendWrapper>
