@@ -9,6 +9,8 @@ import {
 } from '@/views/discover/c-views/recommned/store/recommend'
 import HotRecommend from '@/views/discover/c-views/recommned/c-cpns/hot-recommend'
 import NewAlbum from '@/views/discover/c-views/recommned/c-cpns/new-album'
+import UserLogin from '@/views/discover/c-views/recommned/c-cpns/user-login'
+import SettleSinger from '@/views/discover/c-views/recommned/c-cpns/settle-singer'
 
 interface IProps {
   children?: ReactNode
@@ -28,7 +30,10 @@ const Recommend: FC<IProps> = () => {
           <HotRecommend />
           <NewAlbum />
         </div>
-        <div className="right">right</div>
+        <div className="right">
+          <UserLogin />
+          <SettleSinger />
+        </div>
       </div>
     </RecommendWrapper>
   )
