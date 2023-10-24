@@ -5,7 +5,7 @@ interface IProps {
   children?: ReactNode
 }
 const SettleSinger: FC<IProps> = () => {
-  return <SingerWrapper>singer</SingerWrapper>
+  return <SingerWrapper></SingerWrapper>
 }
 
 export default memo(SettleSinger)

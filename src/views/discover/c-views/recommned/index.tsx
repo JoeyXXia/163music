@@ -5,7 +5,8 @@ import { useAppDispatch } from '@/store'
 import {
   fetchBannerDataAction,
   fetchNewAlbumAction,
-  fetchRecommendAction
+  fetchRecommendAction,
+  fetchSettleSingerAction
 } from '@/views/discover/c-views/recommned/store/recommend'
 import HotRecommend from '@/views/discover/c-views/recommned/c-cpns/hot-recommend'
 import NewAlbum from '@/views/discover/c-views/recommned/c-cpns/new-album'
@@ -21,6 +22,7 @@ const Recommend: FC<IProps> = () => {
     dispatch(fetchBannerDataAction())
     dispatch(fetchRecommendAction())
     dispatch(fetchNewAlbumAction())
+    dispatch(fetchSettleSingerAction())
   }, [])
   return (
     <RecommendWrapper>

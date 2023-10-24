@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {
+  getArtistList,
   getBanners,
   getHotRecommend,
   getNewAlbum
@@ -28,16 +29,27 @@ export const fetchNewAlbumAction = createAsyncThunk(
     dispatch(changeAlbumsAction(res.albums))
   }
 )
+
+export const fetchSettleSingerAction = createAsyncThunk(
+  'settleSinger',
+  async (arg, { dispatch }) => {
+    const res = await getArtistList(5)
+    dispatch(changeSettleSingerAction(res.artists))
+  }
+)
+
 interface IRecommendState {
   banners: any[]
   hotRecommend: any[]
-  newAlbums: []
+  newAlbums: any[]
+  settleSinger: any[]
 }
 
 const initialState: IRecommendState = {
   banners: [],
   hotRecommend: [],
-  newAlbums: []
+  newAlbums: [],
+  settleSinger: []
 }
 
 const recommendSlice = createSlice({
@@ -52,6 +64,9 @@ const recommendSlice = createSlice({
     },
     changeAlbumsAction(state, { payload }) {
       state.newAlbums = payload
+    },
+    changeSettleSingerAction(state, { payload }) {
+      state.settleSinger = payload
     }
   }
 })
@@ -59,6 +74,7 @@ const recommendSlice = createSlice({
 export const {
   changeBannerAction,
   changeRecommendsAction,
-  changeAlbumsAction
+  changeAlbumsAction,
+  changeSettleSingerAction
 } = recommendSlice.actions
 export default recommendSlice.reducer
