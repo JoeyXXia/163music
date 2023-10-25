@@ -12,6 +12,7 @@ import HotRecommend from '@/views/discover/c-views/recommned/c-cpns/hot-recommen
 import NewAlbum from '@/views/discover/c-views/recommned/c-cpns/new-album'
 import UserLogin from '@/views/discover/c-views/recommned/c-cpns/user-login'
 import SettleSinger from '@/views/discover/c-views/recommned/c-cpns/settle-singer'
+import HotAnchor from '@/views/discover/c-views/recommned/c-cpns/hot-anchor'
 
 interface IProps {
   children?: ReactNode
@@ -35,6 +36,7 @@ const Recommend: FC<IProps> = () => {
         <div className="right">
           <UserLogin />
           <SettleSinger />
+          <HotAnchor />
         </div>
       </div>
     </RecommendWrapper>

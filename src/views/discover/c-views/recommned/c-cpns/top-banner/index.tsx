@@ -34,7 +34,7 @@ const TopBanner: FC<IProps> = () => {
   }
 
   let bgImageUrl
-  if (currentIndex >= 0 && banners.length > 0) {
+  if (currentIndex >= 0 && banners?.length > 0) {
     bgImageUrl = banners[currentIndex].imageUrl + '?imageView&blur=40x20'
   }
 
@@ -55,7 +55,7 @@ const TopBanner: FC<IProps> = () => {
             beforeChange={handleBeforeChange}
             afterChange={handleAfterChange}
           >
-            {banners.map((item) => {
+            {banners?.map((item) => {
               return (
                 <div className="banner-item" key={item.imageUrl}>
                   <img
@@ -68,7 +68,7 @@ const TopBanner: FC<IProps> = () => {
             })}
           </Carousel>
           <ul className="dots">
-            {banners.map((item, index) => {
+            {banners?.map((item, index) => {
               return (
                 <li key={item.imageUrl}>
                   <span
