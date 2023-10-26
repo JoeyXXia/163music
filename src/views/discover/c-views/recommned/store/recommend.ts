@@ -3,7 +3,8 @@ import {
   getArtistList,
   getBanners,
   getHotRecommend,
-  getNewAlbum
+  getNewAlbum,
+  getPlaylistDetail
 } from '@/views/discover/c-views/recommned/service/recommend'
 
 export const fetchBannerDataAction = createAsyncThunk(
@@ -38,6 +39,24 @@ export const fetchSettleSingerAction = createAsyncThunk(
   }
 )
 
+const rankingsIds = [19723756, 3779629, 2884035]
+export const fetchTopRankingAction = createAsyncThunk(
+  'rankingData',
+  async (arg, { dispatch }) => {
+    const promises: Promise<any>[] = []
+    for (const id of rankingsIds) {
+      promises.push(getPlaylistDetail(id))
+    }
+
+    Promise.all(promises).then((res) => {
+      const playLists = res
+        .filter((item) => item.playlist)
+        .map((item) => item.playlist)
+      dispatch(changeTopRankingAction(playLists))
+    })
+  }
+)
+
 interface IRecommendState {
   banners: any[]
   hotRecommend: any[]
@@ -69,6 +88,9 @@ const recommendSlice = createSlice({
     },
     changeSettleSingerAction(state, { payload }) {
       state.settleSinger = payload
+    },
+    changeTopRankingAction(state, { payload }) {
+      state.rankings = payload
     }
   }
 })
@@ -77,6 +99,7 @@ export const {
   changeBannerAction,
   changeRecommendsAction,
   changeAlbumsAction,
-  changeSettleSingerAction
+  changeSettleSingerAction,
+  changeTopRankingAction
 } = recommendSlice.actions
 export default recommendSlice.reducer
