@@ -43,13 +43,15 @@ interface IRecommendState {
   hotRecommend: any[]
   newAlbums: any[]
   settleSinger: any[]
+  rankings: any[]
 }
 
 const initialState: IRecommendState = {
   banners: [],
   hotRecommend: [],
   newAlbums: [],
-  settleSinger: []
+  settleSinger: [],
+  rankings: []
 }
 
 const recommendSlice = createSlice({
