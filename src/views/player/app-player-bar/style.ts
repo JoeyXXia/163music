@@ -21,3 +21,119 @@ export const PLayerBarWrapper = styled.div`
     height: 47px;
   }
 `
+
+export const BarControl = styled.div`
+  display: flex;
+  align-items: center;
+
+  .btn {
+    cursor: pointer;
+  }
+
+  .prev,
+  .next {
+    width: 28px;
+    height: 28px;
+  }
+  .prev {
+    background-position: 0 -130px;
+  }
+
+  .play {
+    width: 36px;
+    height: 36px;
+    margin: 0 8px;
+    background-position: 0 -165px;
+  }
+
+  .next {
+    background-position: -80px -130px;
+  }
+`
+export const BarPlayerInfo = styled.div`
+  display: flex;
+  width: 642px;
+  align-items: center;
+
+  .image {
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+  }
+
+  .info {
+    flex: 1;
+    color: #a1a1a1;
+    margin-left: 10px;
+
+    .song {
+      color: #e1e1e1;
+      position: relative;
+      top: 8px;
+      left: 8px;
+
+      .singer-name {
+        color: #a1a1a1;
+        margin-left: 10px;
+      }
+    }
+
+    .progress {
+      display: flex;
+      align-items: center;
+    }
+  }
+`
+
+export const BarOperator = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 3px;
+
+  .btn {
+    width: 25px;
+    height: 25px;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .pip {
+    background: url(${require('@/assets/img/pip_icon')});
+  }
+
+  .favor {
+    background-position: -88px - 163px;
+  }
+
+  .share {
+    background-position: -114px -163px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    width: 126px;
+    padding-left: 13px;
+    background-position: -147px -248px;
+
+    .volume {
+      background-position: -2px -248px;
+    }
+
+    .loop {
+      background-position: -3px -344px;
+    }
+  }
+
+  .playlist {
+    padding-left: 18px;
+    text-align: center;
+    color: #ccc;
+    width: 59px;
+    background-position: -42px -68px;
+  }
+`
