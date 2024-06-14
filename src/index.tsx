@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
@@ -12,11 +12,13 @@ import { ThemeProvider } from 'styled-components'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </ThemeProvider>
-  </Provider>
+  <StrictMode>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </ThemeProvider>
+    </Provider>
+  </StrictMode>
 )
