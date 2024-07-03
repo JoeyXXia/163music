@@ -30,7 +30,7 @@ const TopBanner: FC<IProps> = () => {
     bannerRef.current?.prev()
   }
   function handleNextClick() {
-    bannerRef.current?.next
+    bannerRef.current?.next()
   }
 
   let bgImageUrl
@@ -49,7 +49,6 @@ const TopBanner: FC<IProps> = () => {
           <Carousel
             autoplay
             dots={false}
-            autoplaySpeed={1000}
             effect="fade"
             ref={bannerRef}
             beforeChange={handleBeforeChange}
