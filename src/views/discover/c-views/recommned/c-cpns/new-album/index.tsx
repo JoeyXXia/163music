@@ -18,7 +18,6 @@ const NewAlbum: FC<IProps> = () => {
     }),
     shallowEqualApp
   )
-  console.log(newAlbums)
 
   // event handler
   function handlePrevClick() {
