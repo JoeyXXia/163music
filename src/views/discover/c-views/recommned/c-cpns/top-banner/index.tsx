@@ -20,8 +20,8 @@ const TopBanner: FC<IProps> = () => {
     (state) => ({ banners: state.recommend.banners }),
     shallowEqualApp
   )
-  function handleBeforeChange() {
-    // setCurrentIndex(current)
+  function handleBeforeChange(current: number) {
+    setCurrentIndex(current)
   }
   function handleAfterChange(current: number) {
     setCurrentIndex(current)
