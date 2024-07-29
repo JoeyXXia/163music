@@ -7,11 +7,17 @@ import {
 } from '@/views/player/app-player-bar/style'
 import { Link } from 'react-router-dom'
 import { Slider } from 'antd'
+import { useAppSelector } from '@/store'
+import { getImageSize } from '@/utils/format'
 
 interface IProps {
   children?: ReactNode
 }
 const AppPlayerBar: FC<IProps> = () => {
+  const { currentSong } = useAppSelector((state) => ({
+    currentSong: state.player.currentSong
+  }))
+
   return (
     <PLayerBarWrapper className="sprite_playbar">
       <div className="content wrap-v2">
@@ -22,12 +28,16 @@ const AppPlayerBar: FC<IProps> = () => {
         </BarControl>
         <BarPlayerInfo>
           <Link to="/player">
-            <img src="" alt="" className="image" />
+            <img
+              src={getImageSize(currentSong?.al?.picUrl, 50)}
+              alt=""
+              className="image"
+            />
           </Link>
           <div className="info">
             <div className="song">
-              <span className="song-name"></span>
-              <span className="singer-name"></span>
+              <span className="song-name">{currentSong.name}</span>
+              <span className="singer-name">{currentSong.ar[0]?.name}</span>
             </div>
             <div className="progress">
               <Slider step={0.5} />
