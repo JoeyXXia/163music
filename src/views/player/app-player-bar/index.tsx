@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode } from 'react'
+import React, { FC, memo, ReactNode, useState } from 'react'
 import {
   BarControl,
   BarOperator,
@@ -14,16 +14,24 @@ interface IProps {
   children?: ReactNode
 }
 const AppPlayerBar: FC<IProps> = () => {
+  const [isPlaying, setIsPlaying] = useState(false)
+
   const { currentSong } = useAppSelector((state) => ({
     currentSong: state.player.currentSong
   }))
 
+  function handlePlayBtnClick() {
+    setIsPlaying(!isPlaying)
+  }
   return (
     <PLayerBarWrapper className="sprite_playbar">
       <div className="content wrap-v2">
-        <BarControl>
+        <BarControl isPlaying={isPlaying}>
           <button className="btn sprite_playbar prev"></button>
-          <button className="btn sprite_playbar play"></button>
+          <button
+            className="btn sprite_playbar play"
+            onClick={handlePlayBtnClick}
+          ></button>
           <button className="btn sprite_playbar next"></button>
         </BarControl>
         <BarPlayerInfo>
