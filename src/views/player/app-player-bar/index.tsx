@@ -15,10 +15,10 @@ interface IProps {
 }
 const AppPlayerBar: FC<IProps> = () => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [progres, setProgres] = useState(0)
-  const [duration, setDuration] = useState(0)
+  const [progress, setProgress] = useState(0)
+  // const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
-  const [isSliding, setIsSliding] = useState(false)
+  // const [isSliding, setIsSliding] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
   const { currentSong } = useAppSelector((state) => ({
@@ -28,27 +28,27 @@ const AppPlayerBar: FC<IProps> = () => {
   function handlePlayBtnClick() {
     setIsPlaying(!isPlaying)
   }
-  function handleChangeMusic(isNext = true) {}
+  function handleChangeMusic() {}
 
   function handleChangePlayMode() {}
 
   function handleSliderChanging(value: number) {
-    setIsSliding(true)
+    // setIsSliding(true)
 
-    setProgres(value)
+    setProgress(value)
 
-    const currentTime = (value / 100) * duration
+    // const currentTime = (value / 100) * duration
     setCurrentTime(currentTime)
   }
 
   function handleSliderChanged(value: number) {
-    const currentTime = (value / 100) * duration
+    // const currentTime = (value / 100) * duration
 
     audioRef.current!.currentTime = currentTime / 1000
 
     setCurrentTime(currentTime)
-    setProgres(value)
-    setIsSliding(false)
+    setProgress(value)
+    // setIsSliding(false)
   }
 
   return (
@@ -57,7 +57,7 @@ const AppPlayerBar: FC<IProps> = () => {
         <BarControl isPlaying={isPlaying}>
           <button
             className="btn sprite_playbar prev"
-            onClick={() => handleChangeMusic(false)}
+            onClick={() => handleChangeMusic}
           ></button>
           <button
             className="btn sprite_playbar play"
@@ -84,20 +84,20 @@ const AppPlayerBar: FC<IProps> = () => {
             <div className="progress">
               <Slider
                 step={0.5}
-                value={progres}
+                value={progress}
                 tooltip={{ formatter: null }}
                 onChange={handleSliderChanging}
                 onAfterChange={handleSliderChanged}
               />
               <div className="time">
-                <span className="current"></span>
+                <span className="current">{currentTime}</span>
                 <span className="divider"></span>
                 <span className="duration"></span>
               </div>
             </div>
           </div>
         </BarPlayerInfo>
-        <BarOperator>
+        <BarOperator playMode={1}>
           <div className="left">
             <button className="btn pip"></button>
             <button className="btn sprite_playbar favor"></button>
