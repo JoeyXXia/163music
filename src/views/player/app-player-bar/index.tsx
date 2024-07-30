@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode, useState } from 'react'
+import React, { FC, memo, ReactNode, useRef, useState } from 'react'
 import {
   BarControl,
   BarOperator,
@@ -15,6 +15,11 @@ interface IProps {
 }
 const AppPlayerBar: FC<IProps> = () => {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [progres, setProgres] = useState(0)
+  const [duration, setDuration] = useState(0)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [isSliding, setIsSliding] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
 
   const { currentSong } = useAppSelector((state) => ({
     currentSong: state.player.currentSong
@@ -23,16 +28,45 @@ const AppPlayerBar: FC<IProps> = () => {
   function handlePlayBtnClick() {
     setIsPlaying(!isPlaying)
   }
+  function handleChangeMusic(isNext = true) {}
+
+  function handleChangePlayMode() {}
+
+  function handleSliderChanging(value: number) {
+    setIsSliding(true)
+
+    setProgres(value)
+
+    const currentTime = (value / 100) * duration
+    setCurrentTime(currentTime)
+  }
+
+  function handleSliderChanged(value: number) {
+    const currentTime = (value / 100) * duration
+
+    audioRef.current!.currentTime = currentTime / 1000
+
+    setCurrentTime(currentTime)
+    setProgres(value)
+    setIsSliding(false)
+  }
+
   return (
     <PLayerBarWrapper className="sprite_playbar">
       <div className="content wrap-v2">
         <BarControl isPlaying={isPlaying}>
-          <button className="btn sprite_playbar prev"></button>
+          <button
+            className="btn sprite_playbar prev"
+            onClick={() => handleChangeMusic(false)}
+          ></button>
           <button
             className="btn sprite_playbar play"
             onClick={handlePlayBtnClick}
           ></button>
-          <button className="btn sprite_playbar next"></button>
+          <button
+            className="btn sprite_playbar next"
+            onClick={() => handleChangeMusic}
+          ></button>
         </BarControl>
         <BarPlayerInfo>
           <Link to="/player">
@@ -48,7 +82,13 @@ const AppPlayerBar: FC<IProps> = () => {
               <span className="singer-name">{currentSong.ar[0]?.name}</span>
             </div>
             <div className="progress">
-              <Slider step={0.5} />
+              <Slider
+                step={0.5}
+                value={progres}
+                tooltip={{ formatter: null }}
+                onChange={handleSliderChanging}
+                onAfterChange={handleSliderChanged}
+              />
               <div className="time">
                 <span className="current"></span>
                 <span className="divider"></span>
@@ -65,12 +105,15 @@ const AppPlayerBar: FC<IProps> = () => {
           </div>
           <div className="right sprite_playbar">
             <button className="btn sprite_playbar volume"></button>
-            <button className="btn sprite_playbar loop"></button>
+            <button
+              className="btn sprite_playbar loop"
+              onClick={handleChangePlayMode}
+            ></button>
             <button className="btn sprite_playbar playlist"></button>
           </div>
         </BarOperator>
       </div>
-      <audio />
+      <audio ref={audioRef} />
     </PLayerBarWrapper>
   )
 }
