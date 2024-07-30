@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode, useRef, useState } from 'react'
+import React, { FC, memo, ReactNode, useEffect, useRef, useState } from 'react'
 import {
   BarControl,
   BarOperator,
@@ -7,7 +7,7 @@ import {
 } from '@/views/player/app-player-bar/style'
 import { Link } from 'react-router-dom'
 import { Slider } from 'antd'
-import { useAppSelector } from '@/store'
+import { shallowEqualApp, useAppSelector } from '@/store'
 import { getImageSize } from '@/utils/format'
 
 interface IProps {
@@ -21,9 +21,14 @@ const AppPlayerBar: FC<IProps> = () => {
   // const [isSliding, setIsSliding] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
-  const { currentSong } = useAppSelector((state) => ({
-    currentSong: state.player.currentSong
-  }))
+  const { currentSong } = useAppSelector(
+    (state) => ({
+      currentSong: state.player.currentSong
+    }),
+    shallowEqualApp
+  )
+
+  useEffect(() => {})
 
   function handlePlayBtnClick() {
     setIsPlaying(!isPlaying)
@@ -50,6 +55,9 @@ const AppPlayerBar: FC<IProps> = () => {
     setProgress(value)
     // setIsSliding(false)
   }
+
+  //music progress
+  function handTimeUpdate() {}
 
   return (
     <PLayerBarWrapper className="sprite_playbar">
@@ -113,7 +121,7 @@ const AppPlayerBar: FC<IProps> = () => {
           </div>
         </BarOperator>
       </div>
-      <audio ref={audioRef} />
+      <audio ref={audioRef} onTimeUpdate={handTimeUpdate} />
     </PLayerBarWrapper>
   )
 }
