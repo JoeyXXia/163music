@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { Slider } from 'antd'
 import { shallowEqualApp, useAppSelector } from '@/store'
 import { getImageSize } from '@/utils/format'
+import { getSongPlayUrl } from '@/utils/handle-player'
 
 interface IProps {
   children?: ReactNode
@@ -16,9 +17,9 @@ interface IProps {
 const AppPlayerBar: FC<IProps> = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
-  // const [duration, setDuration] = useState(0)
+  const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
-  // const [isSliding, setIsSliding] = useState(false)
+  const [isSliding, setIsSliding] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
   const { currentSong } = useAppSelector(
@@ -28,7 +29,30 @@ const AppPlayerBar: FC<IProps> = () => {
     shallowEqualApp
   )
 
-  useEffect(() => {})
+  useEffect(() => {
+    audioRef.current!.src = getSongPlayUrl(currentSong.id)
+
+    audioRef.current
+      ?.play()
+      .then(() => {
+        setIsPlaying(true)
+      })
+      .catch(() => {
+        setIsPlaying(false)
+      })
+    setDuration(currentSong.dt)
+  }, [currentSong])
+
+  //player process
+  function handleTimeUpdate() {
+    const currentTime = audioRef.current!.currentTime * 1000
+
+    if (!isSliding) {
+      const progress = (currentTime / duration) * 100
+      setProgress(progress)
+      setCurrentTime(currentTime)
+    }
+  }
 
   function handlePlayBtnClick() {
     setIsPlaying(!isPlaying)
@@ -100,7 +124,7 @@ const AppPlayerBar: FC<IProps> = () => {
               <div className="time">
                 <span className="current">{currentTime}</span>
                 <span className="divider"></span>
-                <span className="duration"></span>
+                <span className="duration">{duration}</span>
               </div>
             </div>
           </div>
