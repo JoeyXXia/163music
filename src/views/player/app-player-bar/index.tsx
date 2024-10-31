@@ -53,7 +53,7 @@ const AppPlayerBar: FC<IProps> = () => {
       setCurrentTime(currentTime)
     }
   }
-
+  console.log(setIsSliding, handleTimeUpdate)
   function handlePlayBtnClick() {
     setIsPlaying(!isPlaying)
   }
@@ -111,7 +111,7 @@ const AppPlayerBar: FC<IProps> = () => {
           <div className="info">
             <div className="song">
               <span className="song-name">{currentSong.name}</span>
-              <span className="singer-name">{currentSong.ar[0]?.name}</span>
+              {/*<span className="singer-name">{currentSong.ar[0]?.name}</span>*/}
             </div>
             <div className="progress">
               <Slider
