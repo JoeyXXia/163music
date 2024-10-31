@@ -111,7 +111,7 @@ export const BarOperator = styled.div<IBarOperator>`
   }
 
   .favor {
-    background-position: -88px - 163px;
+    background-position: -88px -163px;
   }
 
   .share {
