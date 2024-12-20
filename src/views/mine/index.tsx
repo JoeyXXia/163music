@@ -7,8 +7,13 @@ interface IProps {
 const Mine: FC<IProps> = () => {
   return (
     <MineMusicWrapper>
-      <h2>登录我的音乐</h2>
-      <img src="../../assets/img/mine_sprite.png" alt="yyy" />
+      <div className="content wrap-v2">
+        <div className="pic">
+          <a href="/#" className="login">
+            立即登录
+          </a>
+        </div>
+      </div>
     </MineMusicWrapper>
   )
 }
