@@ -4,7 +4,7 @@ interface IProps {
   children?: ReactNode
 }
 const Ranking: FC<IProps> = () => {
-  return <div>discover</div>
+  return <div>ranking</div>
 }
 
 export default memo(Ranking)

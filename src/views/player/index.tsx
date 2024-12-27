@@ -3,8 +3,8 @@ import React, { FC, memo, ReactNode } from 'react'
 interface IProps {
   children?: ReactNode
 }
-const Player: FC<IProps> = () => {
+const XXPlayer: FC<IProps> = () => {
   return <div>player</div>
 }
 
-export default memo(Player)
+export default memo(XXPlayer)

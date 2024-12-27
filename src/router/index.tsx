@@ -6,6 +6,7 @@ import Songs from '@/views/discover/c-views/songs'
 import Djradio from '@/views/discover/c-views/djradio'
 import Artist from '@/views/discover/c-views/artist'
 import Album from '@/views/discover/c-views/album'
+import XXPlayer from '@/views/player'
 
 const Discover = lazy(() => import('@/views/discover'))
 const Focus = lazy(() => import('@/views/focus'))
@@ -48,6 +49,10 @@ const routes: RouteObject[] = [
       {
         path: '/discover/album',
         element: <Album />
+      },
+      {
+        path: '/discover/player',
+        element: <XXPlayer />
       }
     ]
   },

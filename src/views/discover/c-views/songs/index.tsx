@@ -4,7 +4,7 @@ interface IProps {
   children?: ReactNode
 }
 const Songs: FC<IProps> = () => {
-  return <div>discover</div>
+  return <div>songs</div>
 }
 
 export default memo(Songs)
